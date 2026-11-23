@@ -1,0 +1,174 @@
+/* =====================================================
+   HOMESTOCK - style.css
+   Dimuat SETELAH Bootstrap, jadi menimpa tampilan default.
+   Palet tetap biru seperti desain awal.
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --hs-dark:    #0D47A1;
+    --hs-primary: #2196F3;
+    --hs-light:   #E3F2FD;
+    --hs-soft:    #BBDEFB;
+    --hs-radius:  0.9rem;
+    --hs-shadow:  0 4px 16px rgba(13, 71, 161, 0.08);
+    --hs-shadow-hover: 0 10px 28px rgba(13, 71, 161, 0.16);
+}
+
+/* ---------- Dasar ---------- */
+body {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #E3F2FD 0%, #F5FAFF 100%) fixed !important;
+    color: #2b3445;
+    min-height: 100vh;
+}
+h3, h5 { letter-spacing: -0.2px; }
+a { transition: color .2s ease; }
+
+/* Animasi muncul halus */
+@keyframes hsFadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.container.py-4 { animation: hsFadeUp .45s ease both; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+    background: linear-gradient(90deg, #0D47A1 0%, #1565C0 60%, #1E88E5 100%) !important;
+    box-shadow: 0 4px 14px rgba(13, 71, 161, 0.25) !important;
+    padding: .7rem 0;
+}
+.navbar-brand { font-size: 1.3rem; letter-spacing: .3px; }
+.navbar .nav-link {
+    position: relative;
+    font-weight: 500;
+    font-size: .92rem;
+    padding: .5rem .85rem !important;
+    border-radius: .5rem;
+}
+.navbar .nav-link:hover { background: rgba(255,255,255,.12); }
+.navbar .nav-link.active {
+    background: rgba(255,255,255,.18);
+    color: #fff !important;
+}
+.navbar .btn-outline-light { border-radius: 2rem; font-weight: 500; }
+.navbar .btn-outline-light:hover { background: #fff; color: var(--hs-dark); }
+
+/* ---------- Card ---------- */
+.card {
+    border: none !important;
+    border-radius: var(--hs-radius) !important;
+    box-shadow: var(--hs-shadow) !important;
+    transition: transform .25s ease, box-shadow .25s ease;
+    background: #fff;
+}
+.card:hover { box-shadow: var(--hs-shadow-hover) !important; }
+/* Kartu statistik di dashboard sedikit naik saat disentuh */
+.card.border-start { border-left-width: 5px !important; }
+.card.border-start:hover { transform: translateY(-4px); }
+.card.border-start h3 { font-size: 2rem; }
+.card h5.text-primary { color: var(--hs-dark) !important; }
+
+/* Banner selamat datang */
+.rounded-4.text-white.shadow-sm {
+    background: linear-gradient(120deg, #0D47A1 0%, #2196F3 100%) !important;
+    box-shadow: 0 8px 24px rgba(33, 150, 243, 0.35) !important;
+    position: relative;
+    overflow: hidden;
+}
+.rounded-4.text-white.shadow-sm::after {
+    content: "";
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+}
+
+/* ---------- Tabel ---------- */
+.table-responsive { border-radius: .6rem; }
+.table thead,
+.table thead tr,
+.table thead th {
+    background-color: var(--hs-light) !important;
+    color: var(--hs-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: .72rem;
+    letter-spacing: .6px;
+    border-bottom: 2px solid var(--hs-soft) !important;
+    white-space: nowrap;
+}
+.table > :not(caption) > * > * { padding: .75rem .8rem; }
+.table tbody tr { transition: background-color .15s ease; }
+.table-hover > tbody > tr:hover > * { background-color: #F1F8FF; }
+.table tbody td { border-color: #EDF2F7; }
+
+/* ---------- Form ---------- */
+.form-control, .form-select {
+    border-radius: .55rem;
+    border: 1px solid #CFD8E3;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--hs-primary);
+    box-shadow: 0 0 0 .22rem rgba(33, 150, 243, .2);
+}
+.form-label { font-weight: 500; margin-bottom: .25rem; }
+
+/* ---------- Tombol ---------- */
+.btn { border-radius: .55rem; font-weight: 500; transition: all .2s ease; }
+.btn:active { transform: scale(.97); }
+.btn-primary {
+    background: linear-gradient(135deg, #2196F3, #1976D2) !important;
+    border: none !important;
+    box-shadow: 0 3px 10px rgba(33, 150, 243, .3);
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1976D2, #0D47A1) !important;
+    box-shadow: 0 5px 14px rgba(13, 71, 161, .35);
+    transform: translateY(-1px);
+}
+.btn-danger:hover, .btn-warning:hover { transform: translateY(-1px); }
+.btn-outline-secondary:hover { transform: translateY(-1px); }
+
+/* ---------- Badge & Alert ---------- */
+.badge { border-radius: 2rem; padding: .4em .8em; font-weight: 500; letter-spacing: .2px; }
+.alert { border: none; border-radius: .7rem; }
+
+/* ---------- Halaman Login / Register ---------- */
+body.d-flex.vh-100 {
+    background: linear-gradient(135deg, #0D47A1 0%, #1E88E5 55%, #64B5F6 100%) fixed !important;
+    position: relative;
+    overflow: hidden;
+}
+body.d-flex.vh-100::before,
+body.d-flex.vh-100::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,.09);
+    z-index: 0;
+}
+body.d-flex.vh-100::before { width: 420px; height: 420px; top: -120px; left: -100px; }
+body.d-flex.vh-100::after  { width: 320px; height: 320px; bottom: -100px; right: -60px; }
+body.d-flex.vh-100 .container { position: relative; z-index: 1; animation: hsFadeUp .55s ease both; }
+body.d-flex.vh-100 .card {
+    border-radius: 1.2rem !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .25) !important;
+}
+body.d-flex.vh-100 .card:hover { transform: none; }
+body.d-flex.vh-100 .btn-primary { padding: .65rem; }
+
+/* ---------- Responsif ---------- */
+@media (max-width: 767.98px) {
+    .card.border-start h3 { font-size: 1.6rem; }
+    .navbar .nav-link { padding: .6rem .8rem !important; }
+}
+
+/* ---------- Cetak ---------- */
+@media print {
+    .navbar, .no-print { display: none !important; }
+    body { background: #fff !important; }
+    .card { box-shadow: none !important; }
+}
